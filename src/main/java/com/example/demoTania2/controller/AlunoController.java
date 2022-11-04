@@ -46,4 +46,27 @@ public class AlunoController {
         alRepo.save(aluno);
     }
 
+    @GetMapping("/nome/{nome}")
+    public List<Aluno> listaPorNome(@PathVariable(value = "nome") String nome)
+    {
+        return alRepo.findByNome(nome);
+    }
+
+    @GetMapping(value = "/raMaior/{ra}")
+    public List<Aluno> listarPorRaMaior(@PathVariable(value = "ra") int ra)
+    {
+        return alRepo.findByRaMaior(ra);
+    }
+
+    @GetMapping(value = "/porLetra/{letra}")
+    public List<Aluno> listarPorLetraNoNome(@PathVariable(value = "letra") String s)
+    {
+        return alRepo.findByLetra(s);
+    }
+
+    @GetMapping(value = "/RaNome/{ra}{nome}")
+    public List<String> listarRaNome(@PathVariable(value = "ra") int ra, @PathVariable(value = "nome") String nome)
+    {
+        return alRepo.findByRaNome(ra, nome);
+    }
 }
